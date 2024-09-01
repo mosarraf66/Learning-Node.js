@@ -5,7 +5,6 @@ app.get('/', function (req, res) {
   res.send('Hello World')
 })
 
-
 app.get('/chicken',(req, res) =>{
     res.send('chicken briyani is ready')
 })
@@ -15,8 +14,7 @@ app.get('/biryani',(req, res) =>{
         "name" : "chicken biryani half - 120",
         "fullplate" : 120,
         "hotel name" : "biryani king"
-    }
-    
+    }   
     res.send(menu)
 })
 
