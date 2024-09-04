@@ -6,6 +6,7 @@ const bodyParser = require ('body-parser');
 app.use(bodyParser.json()); // req body
 
 const Person = require('./models/Person');
+const MenuItem = require('./models/menuItem');
  
 app.get('/', function (req, res) {
   res.send('Hello World')
@@ -24,12 +25,28 @@ app.post('/person', async (req, res)=>{
         const response = await newPerson.save();
         console.log('data saved');
         res.status(200).json(response);
-  } catch (err) {
+  }
+    catch (err) {
         console.log(err);
         res.status(500).json({error: 'Internal server Error'});
   }
  
 })
+
+// GET method to get the person data
+app.get('/person', async (req, res)=>{
+    try {
+        const data = await Person.find();
+        console.log('data fetched');
+        res.status(200).json(data);
+
+    } catch (error) {
+      console.log(err);
+      res.status(500).json({error: 'Internal server Error'});
+    }
+
+})
+
 
 
 app.listen(3000 , ()=>{
